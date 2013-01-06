@@ -1,11 +1,8 @@
 <?php
 
 // Local
-$app['locale'] = 'fr';
+$app['locale'] = 'en';
 $app['session.default_locale'] = $app['locale'];
-$app['translator.messages'] = array(
-    'fr' => __DIR__.'/../resources/locales/fr.yml',
-);
 
 // Cache
 $app['cache.path'] = __DIR__ . '/../../cache';

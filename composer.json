@@ -36,9 +36,25 @@
         "symfony/validator"     : "2.1.*",
         "symfony/yaml"          : "2.1.*",
         "symfony/config"        : "2.1.*",
+	"symfony/dependency-injection"	: "2.1.*",
+	"symfony/browser-kit"	: "2.1.*",
+	"symfony/class-loader"	: "2.1.*",
+	"symfony/console"	: "2.1.*",
+	"symfony/process"	: "2.1.*",
+	"symfony/finder"	: "2.1.*",
+	"symfony/css-selector"	: ">=2.1,<2.3-dev",
+	"symfony/dom-crawler"	: ">=2.1,<2.3-dev",
+	"symfony/templating"	: "2.1.*",
+	"symfony/security"	: "2.1.*",
         "kriswallsmith/assetic" : "1.0.*",
         "twitter/bootstrap"     : "2.0.4",
-        "fate/silex-extensions" : "dev-master"
+        "fate/silex-extensions" : "dev-master",
+	"doctrine/common"	: ">=2.2,<2.4-dev",
+	"doctrine/dbal"		: ">=2.2,<2.4-dev",
+	"doctrine/orm"		: ">=2.2,<2.4-dev",
+	"doctrine/mongodb"	: "*",
+	"predis/predis"		: "*",
+	"oyatel/twitter-async"	: "dev-master"
     },
     "require-dev": {
         "symfony/dom-crawler"   : "2.1.*",
@@ -55,3 +71,4 @@
         }
     }
 }
+

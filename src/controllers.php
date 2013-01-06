@@ -160,6 +160,43 @@ $app->get('/page-with-cache', function() use ($app) {
     return $response;
 })->bind('page_with_cache');
 
+$app->get('/twitter', function() use ($app) {
+    
+    define('KEY', '58y4dIRkRXGEpsiyzbTfQ');
+    define('SECRET', 'JAPw43fw8rowMDYLYR2IIRfT9xUda0TkeIaOU7a3I');
+    define('TOKEN', '95092930-g8tMb6bf4T040LNrKGNoiVNjQ6IJAAvyuRaYsz9oD');
+    define('TOKEN_SECRET', '6p5FLT6WspplnviOtOH3qdNgvvESIslAZGOPtsCxCsA');
+
+    try {
+        
+        $twitterObj = new EpiTwitter(KEY, SECRET, TOKEN, TOKEN_SECRET); 
+
+        $trends = $twitterObj->get('/trends/place.json', array('id' => 23424975));  
+        
+        $results = array();
+        foreach($trends->response[0]['trends'] as $trend) {
+            $search = $twitterObj->get(
+                '/search/tweets.json', 
+                array('q' => $trend['query']));
+            //print '<pre>';
+            //print_r($search->response['statuses'][0]['text']);die;
+            $results[] = $search->response['statuses'][0]['text'];
+        }
+        
+        //print '<pre>';print_r($trends->response[0]['trends']); print '</pre>';die;
+
+    } catch (Exception $e) {
+        print '<pre>';
+        print $e->getCode();
+        print $e->getMessage();
+        die;
+        $app['session']->setFlash('error', $e->getMessage());
+
+    }
+    return $app['twig']->render('twitter.html.twig', array('trends' => $results));
+    
+})->bind('twitter');
+
 $app->error(function (\Exception $e, $code) use ($app) {
     if ($app['debug']) {
         return;
